@@ -1,5 +1,5 @@
 # ==============================================================================
-# H2SmartLab Ontology (HYDLAB)
+# Hydrogen Research Infrastructure Ontology (HYDLAB)
 # Canonical source: Turtle (.ttl)
 # Base IRI: https://purl.org/hydlab/ns#
 # Derived from: hydlab-Ontology diagram
@@ -43,10 +43,13 @@
         It aligns with W3C SOSA/SSN for sensor observations, EMMO for devices,
         OEO for power plant concepts, and schema.org for organisations.
     """@en ;
+    <https://purl.org/hydlab/ns>
+    a owl:Ontology ;
+    dcterms:rights "Copyright (c) 2026 Smritirekha. Licensed under CC BY-SA 4.0."@en ;
     dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
     vann:preferredNamespacePrefix "hydlab" ;
     vann:preferredNamespaceURI "https://purl.org/hydlab/ns#" ;
-    dcterms:created "2024-01-01"^^xsd:date .
+    dcterms:created "2024-05-01"^^xsd:date .
 
 
 # ==============================================================================
