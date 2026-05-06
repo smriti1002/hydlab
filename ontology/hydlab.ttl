@@ -2,7 +2,7 @@
 # H2SmartLab Ontology (HYDLAB)
 # Canonical source: Turtle (.ttl)
 # Base IRI: https://purl.org/hydlab/ns#
-# Derived from: H2smartlab_classes_and_properties ontology diagram
+# Derived from: hydlab-Ontology diagram
 # ==============================================================================
 
 @base <https://purl.org/hydlab/ns#> .
@@ -35,9 +35,9 @@
     a owl:Ontology ;
     owl:versionIRI <https://purl.org/hydlab/ns/1.0.0> ;
     owl:versionInfo "1.0.0"^^xsd:string ;
-    dcterms:title "H2SmartLab Ontology"@en ;
+    dcterms:title "Hydrogen Research Infrastructure Ontology"@en ;
     dcterms:description """
-        The H2SmartLab Ontology (HYDLAB) describes the structure of a hydrogen
+        The Hydrogen Research Infrastructure Ontology (HYDLAB) describes the structure of a hydrogen
         smart laboratory including its organisational context, physical infrastructure,
         process units, electrochemical devices, and sensor measurement apparatus.
         It aligns with W3C SOSA/SSN for sensor observations, EMMO for devices,
@@ -150,7 +150,7 @@ hydlab:PEMElectrolyzer
 
 
 # ==============================================================================
-# LEVEL 6 — EIT (Electrochemical Impedance Tool / measurement entity)
+# LEVEL 6 — Observable quantities and sensor apparatus
 # ==============================================================================
 
 hydlab:EIT
@@ -159,11 +159,6 @@ hydlab:EIT
     rdfs:label "EIT"@en ;
     rdfs:comment "Electrochemical Impedance Tool — the measurement apparatus associated with the PEM Electrolyzer."@en ;
     dcterms:isPartOf hydlab:PEMElectrolyzer .
-
-
-# ==============================================================================
-# LEVEL 7 — Observable quantities and sensor apparatus
-# ==============================================================================
 
 hydlab:PotentialDifference
     a owl:Class ;
