@@ -1,6 +1,6 @@
 # Hydrogen Research Infrastructure Ontology (HYDLAB)
 
-A domain specific layered OWL ontology for the semantic modelling of hydrogen research infrastructure or a smart laboratory 
+A domain specific layered OWL ontology for the semantic modeling of hydrogen research infrastructure or a smart laboratory 
 
 ## Namespace
 
@@ -37,9 +37,9 @@ Organization
 
 | Path | Purpose |
 |------|---------|
-| `ontology/hydlab.ttl`    | **Canonical source** — edit this only |
-| `ontology/hydlab.owl`    | OWL/RDF XML — auto-generated, do not hand-edit |
-| `ontology/hydlab.jsonld` | JSON-LD — auto-generated, do not hand-edit |
+| `ontology/hydlab.ttl`    | **Canonical source** — only this to be edited for future versions |
+| `ontology/hydlab.owl`    | OWL/RDF XML — auto-generated with python script, not to be hand-edited |
+| `ontology/hydlab.jsonld` | JSON-LD — auto-generated with python script, not to be hand-edited |
 | `scripts/convert.py`     | Regenerates `.owl` and `.jsonld` from `.ttl` |
 | `scripts/generate_docs.py` | Generates `docs/index.html` documentation page |
 | `docs/index.html`        | Human-readable HTML documentation |
@@ -50,10 +50,10 @@ Organization
 ```bash
 pip install rdflib
 
-# Regenerate OWL/RDF and JSON-LD from the Turtle source
+# For Regenerating OWL/RDF and JSON-LD from the Turtle source
 python scripts/convert.py
 
-# Generate HTML documentation
+# To generate HTML documentation
 pip install pylode beautifulsoup4   # optional but gives richer output
 python scripts/generate_docs.py
 ```
