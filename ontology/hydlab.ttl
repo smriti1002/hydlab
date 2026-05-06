@@ -1,0 +1,300 @@
+# ==============================================================================
+# H2SmartLab Ontology (HYDLAB)
+# Canonical source: Turtle (.ttl)
+# Base IRI: https://purl.org/hydlab/ns#
+# Derived from: H2smartlab_classes_and_properties ontology diagram
+# ==============================================================================
+
+@base <https://purl.org/hydlab/ns#> .
+
+@prefix hydlab:   <https://purl.org/hydlab/ns#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix schema:   <https://schema.org/> .
+@prefix sosa:     <http://www.w3.org/ns/sosa/> .
+@prefix ssn:      <http://www.w3.org/ns/ssn/> .
+@prefix ssn-system: <http://www.w3.org/ns/ssn/systems/> .
+@prefix om:       <http://www.ontology-of-units-of-measure.org/resource/om-2/> .
+@prefix qudt:     <http://qudt.org/schema/qudt/> .
+@prefix emmo:     <https://emmo.info/emmo#> .
+@prefix oeo:      <http://openenergy-platform.org/ontology/oeo/> .
+@prefix dcmi:     <http://purl.org/dc/terms/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix vann:     <http://purl.org/vocab/vann/> .
+
+
+# ==============================================================================
+# Ontology metadata
+# ==============================================================================
+
+<https://purl.org/hydlab/ns>
+    a owl:Ontology ;
+    owl:versionIRI <https://purl.org/hydlab/ns/1.0.0> ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    dcterms:title "H2SmartLab Ontology"@en ;
+    dcterms:description """
+        The H2SmartLab Ontology (HYDLAB) describes the structure of a hydrogen
+        smart laboratory including its organisational context, physical infrastructure,
+        process units, electrochemical devices, and sensor measurement apparatus.
+        It aligns with W3C SOSA/SSN for sensor observations, EMMO for devices,
+        OEO for power plant concepts, and schema.org for organisations.
+    """@en ;
+    dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    vann:preferredNamespacePrefix "hydlab" ;
+    vann:preferredNamespaceURI "https://purl.org/hydlab/ns#" ;
+    dcterms:created "2024-01-01"^^xsd:date .
+
+
+# ==============================================================================
+# LEVEL 1 — Organisation
+# ==============================================================================
+
+hydlab:Organization
+    a owl:Class, rdfs:Class ;
+    owl:equivalentClass schema:Organization ;
+    rdfs:label "Organization"@en ;
+    rdfs:comment "Top-level organisational entity. Aligned with schema:Organization."@en ;
+    skos:altLabel "Organisation"@en .
+
+hydlab:ResearchOrganization
+    a owl:Class ;
+    rdfs:subClassOf hydlab:Organization ;
+    owl:equivalentClass schema:ResearchOrganization ;
+    skos:broadMatch hydlab:Organization ;
+    rdfs:label "Research Organization"@en ;
+    rdfs:comment "An organisation primarily engaged in scientific research."@en .
+
+hydlab:AreaSciencePark
+    a owl:Class ;
+    rdfs:subClassOf hydlab:Organization ;
+    skos:concept hydlab:AreaSciencePark ;
+    rdfs:label "Area Science Park"@en ;
+    rdfs:comment "A science and technology park hosting research organisations and infrastructure."@en .
+
+
+# ==============================================================================
+# LEVEL 2 — Technological Infrastructure
+# ==============================================================================
+
+hydlab:TechnologicalInfrastructure
+    a owl:Class ;
+    rdfs:label "Technological Infrastructure"@en ;
+    rdfs:comment "A technological infrastructure belonging to an organisation."@en ;
+    dcterms:isPartOf hydlab:Organization .
+
+hydlab:H2INFRA
+    a owl:Class ;
+    rdfs:subClassOf hydlab:TechnologicalInfrastructure ;
+    rdfs:label "H2INFRA"@en ;
+    rdfs:comment "The hydrogen infrastructure component of the technological infrastructure."@en ;
+    dcterms:isPartOf hydlab:AreaSciencePark .
+
+
+# ==============================================================================
+# LEVEL 3 — Power Plant & APSU
+# ==============================================================================
+
+hydlab:HydrogenPowerPlant
+    a owl:Class ;
+    owl:equivalentClass oeo:HydrogenPowerPlant ;
+    rdfs:label "Hydrogen Power Plant"@en ;
+    rdfs:comment "A power plant that uses hydrogen as its primary energy carrier."@en ;
+    dcterms:isPartOf hydlab:TechnologicalInfrastructure .
+
+hydlab:APSU
+    a owl:Class ;
+    rdfs:label "APSU"@en ;
+    rdfs:comment "Auxiliary Power Supply Unit — provides auxiliary power within the hydrogen infrastructure."@en ;
+    dcterms:isPartOf hydlab:H2INFRA .
+
+
+# ==============================================================================
+# LEVEL 4 — Main Process Unit
+# ==============================================================================
+
+hydlab:MainProcessUnit
+    a owl:Class ;
+    rdfs:label "Main Process Unit"@en ;
+    rdfs:comment "The central process unit of the hydrogen power plant or APSU."@en ;
+    dcterms:isPartOf hydlab:HydrogenPowerPlant, hydlab:APSU .
+
+
+# ==============================================================================
+# LEVEL 5 — Electrochemical Device & Electrolyzer family
+# ==============================================================================
+
+hydlab:ElectrochemicalDevice
+    a owl:Class ;
+    owl:equivalentClass emmo:Device ;
+    rdfs:label "Electrochemical Device"@en ;
+    rdfs:comment "A device that converts chemical energy to electrical energy or vice versa. Aligned with EMMO Device."@en .
+
+hydlab:Electrolyzer
+    a owl:Class ;
+    owl:equivalentClass emmo:Device ;
+    skos:broadMatch hydlab:ElectrochemicalDevice ;
+    rdfs:label "Electrolyzer"@en ;
+    rdfs:comment "An electrochemical device that uses electricity to drive a chemical reaction, typically water splitting to produce hydrogen."@en ;
+    dcterms:isPartOf hydlab:MainProcessUnit .
+
+hydlab:PEMElectrolyzer
+    a owl:Class ;
+    rdfs:subClassOf hydlab:Electrolyzer ;
+    rdfs:label "PEM Electrolyzer"@en ;
+    rdfs:comment "A Proton Exchange Membrane electrolyzer — a specific type of electrolyzer using a solid polymer electrolyte."@en ;
+    dcterms:isPartOf hydlab:MainProcessUnit .
+
+
+# ==============================================================================
+# LEVEL 6 — EIT (Electrochemical Impedance Tool / measurement entity)
+# ==============================================================================
+
+hydlab:EIT
+    a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    rdfs:label "EIT"@en ;
+    rdfs:comment "Electrochemical Impedance Tool — the measurement apparatus associated with the PEM Electrolyzer."@en ;
+    dcterms:isPartOf hydlab:PEMElectrolyzer .
+
+
+# ==============================================================================
+# LEVEL 7 — Observable quantities and sensor apparatus
+# ==============================================================================
+
+hydlab:PotentialDifference
+    a owl:Class ;
+    owl:equivalentClass qudt:ElectricPotentialDifference ;
+    rdfs:label "Potential Difference"@en ;
+    rdfs:comment "The electric potential difference measured by the EIT. Aligned with qudt:ElectricPotentialDifference."@en .
+
+hydlab:Sensor
+    a owl:Class ;
+    owl:equivalentClass sosa:Sensor ;
+    rdfs:label "Sensor"@en ;
+    rdfs:comment "A sensor that performs sampling on the EIT. Aligned with sosa:Sensor."@en .
+
+hydlab:SamplingFrequency
+    a owl:Class ;
+    owl:equivalentClass ssn-system:Frequency ;
+    rdfs:label "1 Hz"@en ;
+    rdfs:comment "The sampling frequency of the sensor — 1 Hz (one sample per second)."@en .
+
+hydlab:Volt
+    a owl:Class ;
+    rdfs:label "V"@en ;
+    rdfs:comment "The unit of measurement for potential difference readings — Volt."@en .
+
+hydlab:RecordedMeasurement
+    a owl:Class ;
+    rdfs:label "Recorded Measurement"@en ;
+    rdfs:comment "A recorded numerical measurement value, typed as xsd:float."@en .
+
+hydlab:SensorID
+    a owl:Class ;
+    rdfs:label "Sensor ID"@en ;
+    rdfs:comment "The unique identifier of a sensor, typed as xsd:float."@en .
+
+
+# ==============================================================================
+# Object Properties
+# ==============================================================================
+
+dcterms:isPartOf
+    a owl:ObjectProperty ;
+    rdfs:label "is part of"@en ;
+    rdfs:comment "Relates a component to the larger entity it belongs to. Reuses dcmi:isPartOf."@en .
+
+hydlab:hasSamplingFrequency
+    a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "has sampling frequency"@en ;
+    rdfs:comment "Relates the EIT to its sensor sampling frequency."@en ;
+    rdfs:domain hydlab:EIT ;
+    rdfs:range hydlab:SamplingFrequency .
+
+hydlab:hasID
+    a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "has ID"@en ;
+    rdfs:comment "Relates the EIT to its unique sensor identifier."@en ;
+    rdfs:domain hydlab:EIT ;
+    rdfs:range hydlab:SensorID .
+
+sosa:observes
+    a owl:ObjectProperty ;
+    rdfs:label "observes"@en ;
+    rdfs:comment "Relates the EIT to the observable property it measures."@en ;
+    rdfs:domain hydlab:EIT ;
+    rdfs:range hydlab:PotentialDifference .
+
+sosa:madeSampling
+    a owl:ObjectProperty ;
+    rdfs:label "made sampling"@en ;
+    rdfs:comment "Relates the EIT to the sensor that performed the sampling."@en ;
+    rdfs:domain hydlab:EIT ;
+    rdfs:range hydlab:Sensor .
+
+om:hasUnit
+    a owl:ObjectProperty ;
+    rdfs:label "has unit"@en ;
+    rdfs:comment "Relates the EIT (or its measurement) to the unit of measure."@en ;
+    rdfs:domain hydlab:EIT ;
+    rdfs:range hydlab:Volt .
+
+skos:concept
+    a owl:ObjectProperty ;
+    rdfs:label "concept"@en ;
+    rdfs:comment "Associates the EIT with its conceptual sensor classification."@en ;
+    rdfs:domain hydlab:EIT ;
+    rdfs:range hydlab:Sensor .
+
+
+# ==============================================================================
+# Datatype Properties
+# ==============================================================================
+
+hydlab:recordedValue
+    a owl:DatatypeProperty ;
+    rdfs:label "recorded value"@en ;
+    rdfs:comment "The numerical value of a recorded measurement."@en ;
+    rdfs:domain hydlab:RecordedMeasurement ;
+    rdfs:range xsd:float .
+
+hydlab:sensorIDValue
+    a owl:DatatypeProperty ;
+    rdfs:label "sensor ID value"@en ;
+    rdfs:comment "The numerical identifier value of a sensor."@en ;
+    rdfs:domain hydlab:SensorID ;
+    rdfs:range xsd:float .
+
+hydlab:frequencyValue
+    a owl:DatatypeProperty ;
+    rdfs:label "frequency value"@en ;
+    rdfs:comment "The numerical value of the sampling frequency in Hz."@en ;
+    rdfs:domain hydlab:SamplingFrequency ;
+    rdfs:range xsd:integer .
+
+hydlab:voltValue
+    a owl:DatatypeProperty ;
+    rdfs:label "volt value"@en ;
+    rdfs:comment "The numerical value of a voltage reading."@en ;
+    rdfs:domain hydlab:Volt ;
+    rdfs:range xsd:integer .
+
+
+# ==============================================================================
+# Named Individuals — canonical instances visible in the diagram
+# ==============================================================================
+
+hydlab:OneHz
+    a hydlab:SamplingFrequency, owl:NamedIndividual ;
+    rdfs:label "1 Hz"@en ;
+    hydlab:frequencyValue 1 ;
+    skos:definition "Standard 1 Hz sampling rate for EIT measurements."@en .
+
+hydlab:VoltUnit
+    a hydlab:Volt, owl:NamedIndividual ;
+    rdfs:label "V"@en ;
+    skos:definition "Volt — SI unit of electric potential difference."@en .

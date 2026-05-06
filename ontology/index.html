@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>H2SmartLab Ontology (HYDLAB)</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 960px; margin: 40px auto; color: #222; }
+    h1   { color: #1a237e; }
+    h2   { color: #283593; border-bottom: 2px solid #283593; padding-bottom: 4px; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 32px; }
+    th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; vertical-align: top; }
+    th   { background: #e8eaf6; }
+    code { background: #f5f5f5; padding: 2px 4px; border-radius: 3px; font-size: 0.9em; }
+    .meta { background: #f9fbe7; border: 1px solid #c5e1a5; padding: 16px; border-radius: 6px; margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+  <h1>H2SmartLab Ontology <small style="font-size:0.6em;color:#888;">(HYDLAB)</small></h1>
+
+  <div class="meta">
+    <strong>Namespace:</strong> <code>https://purl.org/hydlab/ns#</code><br>
+    <strong>Preferred prefix:</strong> <code>hydlab:</code><br>
+    <strong>Version:</strong> 1.0.0<br>
+    <strong>License:</strong> <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+  </div>
+
+  <h2>Classes (18)</h2>
+  <table>
+    <tr><th>IRI</th><th>Label</th><th>Description</th></tr>
+    
+            <tr>
+              <td><code>hydlab:SamplingFrequency</code></td>
+              <td>1 Hz</td>
+              <td>The sampling frequency of the sensor — 1 Hz (one sample per second).</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:APSU</code></td>
+              <td>APSU</td>
+              <td>Auxiliary Power Supply Unit — provides auxiliary power within the hydrogen infrastructure.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:AreaSciencePark</code></td>
+              <td>Area Science Park</td>
+              <td>A science and technology park hosting research organisations and infrastructure.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:EIT</code></td>
+              <td>EIT</td>
+              <td>Electrochemical Impedance Tool — the measurement apparatus associated with the PEM Electrolyzer.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:ElectrochemicalDevice</code></td>
+              <td>Electrochemical Device</td>
+              <td>A device that converts chemical energy to electrical energy or vice versa. Aligned with EMMO Device.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:Electrolyzer</code></td>
+              <td>Electrolyzer</td>
+              <td>An electrochemical device that uses electricity to drive a chemical reaction, typically water splitting to produce hydrogen.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:H2INFRA</code></td>
+              <td>H2INFRA</td>
+              <td>The hydrogen infrastructure component of the technological infrastructure.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:HydrogenPowerPlant</code></td>
+              <td>Hydrogen Power Plant</td>
+              <td>A power plant that uses hydrogen as its primary energy carrier.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:MainProcessUnit</code></td>
+              <td>Main Process Unit</td>
+              <td>The central process unit of the hydrogen power plant or APSU.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:Organization</code></td>
+              <td>Organization</td>
+              <td>Top-level organisational entity. Aligned with schema:Organization.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:PEMElectrolyzer</code></td>
+              <td>PEM Electrolyzer</td>
+              <td>A Proton Exchange Membrane electrolyzer — a specific type of electrolyzer using a solid polymer electrolyte.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:PotentialDifference</code></td>
+              <td>Potential Difference</td>
+              <td>The electric potential difference measured by the EIT. Aligned with qudt:ElectricPotentialDifference.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:RecordedMeasurement</code></td>
+              <td>Recorded Measurement</td>
+              <td>A recorded numerical measurement value, typed as xsd:float.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:ResearchOrganization</code></td>
+              <td>Research Organization</td>
+              <td>An organisation primarily engaged in scientific research.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:Sensor</code></td>
+              <td>Sensor</td>
+              <td>A sensor that performs sampling on the EIT. Aligned with sosa:Sensor.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:SensorID</code></td>
+              <td>Sensor ID</td>
+              <td>The unique identifier of a sensor, typed as xsd:float.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:TechnologicalInfrastructure</code></td>
+              <td>Technological Infrastructure</td>
+              <td>A technological infrastructure belonging to an organisation.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:Volt</code></td>
+              <td>V</td>
+              <td>The unit of measurement for potential difference readings — Volt.</td>
+            </tr>
+  </table>
+
+  <h2>Object Properties (7)</h2>
+  <table>
+    <tr><th>IRI</th><th>Label</th><th>Description</th></tr>
+    
+            <tr>
+              <td><code>http://www.w3.org/2004/02/skos/core#concept</code></td>
+              <td>concept</td>
+              <td>Associates the EIT with its conceptual sensor classification.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:hasID</code></td>
+              <td>has ID</td>
+              <td>Relates the EIT to its unique sensor identifier.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:hasSamplingFrequency</code></td>
+              <td>has sampling frequency</td>
+              <td>Relates the EIT to its sensor sampling frequency.</td>
+            </tr>
+            <tr>
+              <td><code>http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit</code></td>
+              <td>has unit</td>
+              <td>Relates the EIT (or its measurement) to the unit of measure.</td>
+            </tr>
+            <tr>
+              <td><code>http://purl.org/dc/terms/isPartOf</code></td>
+              <td>is part of</td>
+              <td>Relates a component to the larger entity it belongs to. Reuses dcmi:isPartOf.</td>
+            </tr>
+            <tr>
+              <td><code>http://www.w3.org/ns/sosa/madeSampling</code></td>
+              <td>made sampling</td>
+              <td>Relates the EIT to the sensor that performed the sampling.</td>
+            </tr>
+            <tr>
+              <td><code>http://www.w3.org/ns/sosa/observes</code></td>
+              <td>observes</td>
+              <td>Relates the EIT to the observable property it measures.</td>
+            </tr>
+  </table>
+
+  <h2>Datatype Properties (4)</h2>
+  <table>
+    <tr><th>IRI</th><th>Label</th><th>Description</th></tr>
+    
+            <tr>
+              <td><code>hydlab:frequencyValue</code></td>
+              <td>frequency value</td>
+              <td>The numerical value of the sampling frequency in Hz.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:recordedValue</code></td>
+              <td>recorded value</td>
+              <td>The numerical value of a recorded measurement.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:sensorIDValue</code></td>
+              <td>sensor ID value</td>
+              <td>The numerical identifier value of a sensor.</td>
+            </tr>
+            <tr>
+              <td><code>hydlab:voltValue</code></td>
+              <td>volt value</td>
+              <td>The numerical value of a voltage reading.</td>
+            </tr>
+  </table>
+
+  <hr>
+  <p style="font-size:0.8em;color:#888;">
+    Generated from <code>ontology/hydlab.ttl</code> · HYDLAB v1.0.0
+  </p>
+</body>
+</html>

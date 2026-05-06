@@ -1,0 +1,57 @@
+name: Ontology CI
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "ontology/**"
+      - "scripts/**"
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-and-convert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install rdflib
+
+      - name: Validate Turtle source parses cleanly
+        run: |
+          python - <<'EOF'
+          from rdflib import Graph
+          g = Graph()
+          g.parse("ontology/hydlab.ttl", format="turtle")
+          print(f"OK — {len(g)} triples parsed from hydlab.ttl")
+          EOF
+
+      - name: Regenerate OWL and JSON-LD
+        run: python scripts/convert.py
+
+      - name: Verify all three files exist
+        run: |
+          for f in ontology/hydlab.ttl ontology/hydlab.owl ontology/hydlab.jsonld; do
+            if [ -f "$f" ]; then echo "OK: $f"; else echo "MISSING: $f" && exit 1; fi
+          done
+
+      - name: Print class/property summary
+        run: |
+          python - <<'EOF'
+          from rdflib import Graph, RDF, OWL, RDFS
+          g = Graph()
+          g.parse("ontology/hydlab.ttl", format="turtle")
+          classes    = list(g.subjects(RDF.type, OWL.Class))
+          obj_props  = list(g.subjects(RDF.type, OWL.ObjectProperty))
+          data_props = list(g.subjects(RDF.type, OWL.DatatypeProperty))
+          print(f"Classes:            {len(classes)}")
+          print(f"Object properties:  {len(obj_props)}")
+          print(f"Datatype properties:{len(data_props)}")
+          EOF
