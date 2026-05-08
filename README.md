@@ -76,14 +76,3 @@ python scripts/generate_docs.py
 
 Ontology releases are tagged `v1.0.0` (semantic versioning).
 The version is declared in `hydlab.ttl` via `owl:versionInfo`.
-
-
-## License
-
-**Ontology files** (`ontology/` directory) are licensed under
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) —
-one is free to share and adapt as long as attribution is given 
-and distribute derivatives under the same license.
-
-**Software** (scripts, pipeline code) is licensed under the
-[MIT License](LICENSE) — Copyright (c) 2026 Smritirekha.
