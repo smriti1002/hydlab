@@ -3,7 +3,7 @@ generate_docs.py
 ================
 Generates HTML documentation from the Turtle source using pyLODE,
 then post-processes it to inject metadata (version, authors, namespace table)
-from the ontology itself — mirroring the HOLY documentation generator pattern.
+from the ontology itself
 
 Prerequisites:
     pip install pylode beautifulsoup4 rdflib
@@ -101,7 +101,7 @@ def _generate_minimal_html(g) -> None:
   </style>
 </head>
 <body>
-  <h1>H2SmartLab Ontology <small style="font-size:0.6em;color:#888;">(HYDLAB)</small></h1>
+  <h1>Hydrogen Research Infrastructure Ontology <small style="font-size:0.6em;color:#888;">(HYDLAB)</small></h1>
 
   <div class="meta">
     <strong>Namespace:</strong> <code>https://purl.org/hydlab/ns#</code><br>
