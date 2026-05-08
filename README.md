@@ -43,6 +43,7 @@ Organization
 | `scripts/convert.py`     | Regenerates `.owl` and `.jsonld` from `.ttl` |
 | `scripts/generate_docs.py` | Generates `docs/index.html` documentation page |
 | `docs/index.html`        | Human-readable HTML documentation |
+| `scripts/pylode_debug.py`        | Debug script: runs pyLODE and shows the full error if HTML generation fails |
 | `.github/workflows/ontology_ci.yml` | CI: validates and converts on every push |
 
 ## Quick start
