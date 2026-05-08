@@ -80,8 +80,6 @@ The version is declared in `hydlab.ttl` via `owl:versionInfo`.
 
 ## License
 
-This repository uses dual licensing:
-
 **Ontology files** (`ontology/` directory) are licensed under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) —
 one is free to share and adapt as long as attribution is given 

@@ -212,41 +212,46 @@ Creative Commons may be contacted at https://creativecommons.org.
 
 # Imported and/or extended ontology license declarations
 
-In this section, the right and liability declarations of all ontologies which were additionally imported and/or extended within the Hydrogen Ontology:
+In this section, the right and liability declarations of all ontologies which were additionally imported and/or extended within the HYDLAB:
 
-<details><summary><h2>Ontologies With a Permissive Open Source License</h2></summary>
+# HydLab Ontology — Reused Vocabularies and Licenses
 
-|Ontology                                                                                      |Rights                                                                                                      |
-|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-|[Schema.org](https://schema.org/docs/gs.html) (prefix `schema:`)                                        |[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)                            |
-|[Dublin Core Terms](https://dublincore.org/specifications/dublin-core/dcmi-terms/) (prefix `dct:` `dc:`)|[Creative Commons Attribution (CC-BY) 3.0](http://creativecommons.org/licenses/by/3.0/)           |
+<details><summary><h2>Ontologies With W3C Rights Declarations</h2></summary>
+
+| Ontology | Prefix | Rights |
+|---|---|---|
+| [Web Ontology Language (OWL 2)](https://www.w3.org/TR/owl2-overview/) | `owl:` | [&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2012 [W3C](http://www.w3.org/)&reg;, All Rights Reserved. |
+| [Resource Description Framework (RDF)](https://www.w3.org/TR/rdf11-concepts/) | `rdf:` | [&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2004–2014 [W3C](http://www.w3.org/)&reg;, All Rights Reserved. |
+| [RDF Schema](https://www.w3.org/TR/rdf-schema/) | `rdfs:` | [&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2004–2014 [W3C](http://www.w3.org/)&reg;, All Rights Reserved. |
+| [XML Schema Definition Language (XSD)](https://www.w3.org/TR/xmlschema11-1/) | `xsd:` | [&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2012 [W3C](http://www.w3.org/)&reg;, All Rights Reserved. |
+| [Simple Knowledge Organization System (SKOS)](https://www.w3.org/TR/skos-reference/) | `skos:` | [&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2009 [W3C](http://www.w3.org/)&reg;, All Rights Reserved. |
+| [Semantic Sensor Network (SSN)](https://www.w3.org/TR/vocab-ssn/) | `ssn:` | [&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2017 [W3C](http://www.w3.org/)&reg;, All Rights Reserved. |
+| [SOSA — Sensor, Observation, Sample and Actuator](https://www.w3.org/TR/vocab-ssn/) | `sosa:` | [&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2017 [W3C](http://www.w3.org/)&reg;, All Rights Reserved. |
+| [SSN Systems module](https://www.w3.org/TR/vocab-ssn/) | `ssn-system:` | [&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2017 [W3C](http://www.w3.org/)&reg;, All Rights Reserved. |
+
+</details>
+
+<details><summary><h2>Ontologies With Permissive Open Source Licenses</h2></summary>
+
+| Ontology | Prefix | Rights |
+|---|---|---|
+| [Schema.org](https://schema.org/docs/gs.html) | `schema:` | [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html) |
+| [Dublin Core Terms](https://dublincore.org/specifications/dublin-core/dcmi-terms/) | `dcterms:` | [Creative Commons Attribution (CC BY) 3.0](http://creativecommons.org/licenses/by/3.0/) |
+| [Ontology of Units of Measure (OM-2)](http://www.ontology-of-units-of-measure.org/resource/om-2/) | `om:` | [Creative Commons Attribution (CC BY) 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| [Quantities, Units, Dimensions and Types (QUDT)](http://qudt.org) | `qudt:` | [Creative Commons Attribution (CC BY) 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| [European Materials Modelling Ontology (EMMO)](https://emmo.info/emmo) | `emmo:` | [Creative Commons Attribution (CC BY) 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| [Open Energy Ontology (OEO)](http://openenergy-platform.org/ontology/oeo/) | `oeo:` | [Creative Commons Attribution (CC BY) 4.0](https://creativecommons.org/licenses/by/4.0/) |
+
 </details>
 
 <details><summary><h2>Ontologies With Strong Copyleft Licenses</h2></summary>
 
-|Ontology                                                                                      |Rights                                                                                                                                |
-|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|[Vocabulary for Annotating vocabulary descriptions](https://vocab.org/vann/) (prefix `vann:`)          |[&copy;] 2005 [Ian Davis](http://iandavis.com/id/me), [Creative Commons Attribution Share-Alike (CC-BY-SA) 3.0](http://creativecommons.org/licenses/by-sa/3.0/)|
-|[DBpedia](https://dbpedia.org/ontology/) (prefix `dbo:` `dbc:` `dbr:`)                                 |[Creative Commons Attribution Share-Alike (CC-BY-SA) 3.0](http://creativecommons.org/licenses/by-sa/3.0/)                                                      |
-                                        
+| Ontology | Prefix | Rights |
+|---|---|---|
+| [Vocabulary for Annotating vocabulary descriptions (VANN)](https://vocab.org/vann/) | `vann:` | [&copy;](https://vocab.org/vann/) 2005 [Ian Davis](http://iandavis.com/id/me), [Creative Commons Attribution Share-Alike (CC BY-SA) 3.0](http://creativecommons.org/licenses/by-sa/3.0/) |
 
 </details>
 
-<details><summary><h2>Ontologies With W3C Right Declarations</h2></summary>
+---
 
-|Ontology                                                                                      |Rights                                                                                        |
-|----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-
-[Web Ontology Language](https://www.w3.org/TR/owl2-overview/) (prefix `owl:`)                  |[&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2012      [W3C](http://www.w3.org/)&reg;, All Rights Reserved.|
-[Resource Description Framework](https://www.w3.org/TR/rdf11-concepts/) (prefix `rdf:`)        |[&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2004-2014 [W3C](http://www.w3.org/)&reg;, All Rights Reserved.|
-|[XML Schema definition Language](https://www.w3.org/TR/xmlschema11-1/) (prefix `xsd:`)        |[&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2012      [W3C](http://www.w3.org/)&reg;, All Rights Reserved.|
-|[RDF Schema](https://www.w3.org/TR/rdf-schema/) (prefix `rdfs:`)                              |[&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2004-2014 [W3C](http://www.w3.org/)&reg;, All Rights Reserved.|
-|[Simple Knowledge Organization System](https://www.w3.org/TR/skos-reference/) (prefix `skos:`)|[&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright) 2009      [W3C](http://www.w3.org/)&reg;, All Rights Reserved.|
-Reserved.|
-|[The Organization Ontology](http://www.w3.org/ns/org#) (prefix `org:`)                        |[&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright)           [W3C](http://www.w3.org/)&reg;, All Rights Reserved.|
-Reserved.|
-|[Registered Organization Vocabulary](http://www.w3.org/ns/regorg#) (prefix `rov:`)            |[&copy;](https://www.w3.org/Consortium/Legal/ipr-notice#Copyright)           [W3C](http://www.w3.org/)&reg;, All Rights Reserved.|
-
-</details>
-
-=======================================================================
+> HydLab ontology v1.0.0 · Base IRI: `https://purl.org/hydlab/ns#` · Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
