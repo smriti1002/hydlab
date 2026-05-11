@@ -5,7 +5,7 @@ The Hydrogen Research Infrastructure Ontology (HydLab) is licensed under **CC-BY
 
 Included are additional ontologies and their concepts, which are already licensed. The details of these can be seen below.
 
-All defined concepts within the holy: namespace, including classes, annotations, and properties, fall under this license.
+All defined concepts within the hydlab: namespace, including classes, annotations, and properties, fall under this license.
 
 =======================================================================
 
