@@ -1,7 +1,7 @@
 LICENSE DECLARATION
 # LICENSE DECLARATION
 
-The Hydrogen Ontology (HOLY) is licensed under **CC-BY-SA 4.0**. The details of this license can be seen below.
+The Hydrogen Research Infrastructure Ontology (HydLab) is licensed under **CC-BY-SA 4.0**. The details of this license can be seen below.
 
 Included are additional ontologies and their concepts, which are already licensed. The details of these can be seen below.
 
