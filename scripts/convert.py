@@ -27,7 +27,7 @@ def convert() -> None:
     g.parse(str(TTL_FILE), format="turtle")
     print(f"  Parsed {len(g)} triples.")
 
-    # ── OWL / RDF XML ────────────────────────────────────────────────────────
+    # ── OWL / RDF XML ───
     g.serialize(destination=str(OWL_FILE), format="xml")
     print(f"  Written → {OWL_FILE}")
 
