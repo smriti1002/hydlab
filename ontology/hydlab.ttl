@@ -46,11 +46,13 @@
     dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
     vann:preferredNamespacePrefix "hydlab" ;
     vann:preferredNamespaceURI "https://purl.org/hydlab/ns#" ;
+    dcterms:creator "Smritirekha Talukdar" ;
+    dcterms:created "2026"^^xsd:gYear ;
     dcterms:created "2024-05-01"^^xsd:date .
 
 
 # ==============================================================================
-# LEVEL 1 — Organisation
+# LEVEL 1 — Organization
 # ==============================================================================
 
 hydlab:Organization
