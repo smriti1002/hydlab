@@ -71,7 +71,8 @@ hydlab:ResearchOrganization
     rdfs:comment "An organisation primarily engaged in scientific research."@en .
 
 hydlab:AreaSciencePark
-    a owl:Class ;
+    a owl:NamedIndividual ;
+    rdf:type hydlab:ResearchOrganization ;
     rdfs:subClassOf hydlab:Organization ;
     skos:concept hydlab:AreaSciencePark ;
     rdfs:label "Area Science Park"@en ;
@@ -89,7 +90,7 @@ hydlab:TechnologicalInfrastructure
     dcterms:isPartOf hydlab:Organization .
 
 hydlab:H2INFRA
-    a owl:Class ;
+    a owl:NamedIndividual ;
     rdfs:subClassOf hydlab:TechnologicalInfrastructure ;
     rdfs:label "H2INFRA"@en ;
     rdfs:comment "The hydrogen infrastructure component of the technological infrastructure."@en ;
@@ -107,10 +108,11 @@ hydlab:HydrogenPowerPlant
     rdfs:comment "A power plant that uses hydrogen as its primary energy carrier."@en ;
     dcterms:isPartOf hydlab:TechnologicalInfrastructure .
 
-hydlab:APSU
-    a owl:Class ;
+hydlab:APSU hydlab:HydrogenPowerPlant
+    a owl:NamedIndividual ;
+    rdf:type 
     rdfs:label "APSU"@en ;
-    rdfs:comment "Auxiliary Power Supply Unit — provides auxiliary power within the hydrogen infrastructure."@en ;
+    rdfs:comment "Analysis, Design, Storage and Use unit."@en ;
     dcterms:isPartOf hydlab:H2INFRA .
 
 
@@ -147,7 +149,7 @@ hydlab:PEMElectrolyzer
     a owl:Class ;
     rdfs:subClassOf hydlab:Electrolyzer ;
     rdfs:label "PEM Electrolyzer"@en ;
-    rdfs:comment "A Proton Exchange Membrane electrolyzer — a specific type of electrolyzer using a solid polymer electrolyte."@en ;
+    rdfs:comment "A Proton Exchange Membrane electrolyzer — a specific type of electrolyzer with a solid polymer electrolyte."@en ;
     dcterms:isPartOf hydlab:MainProcessUnit .
 
 
