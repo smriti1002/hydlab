@@ -44,11 +44,13 @@
     """@en ;
     dcterms:rights "Copyright (c) 2026 Smritirekha. Licensed under CC BY-SA 4.0."@en ;
     dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dcterms:identifier "https://doi.org/10.5281/zenodo.20202095" ;
+    dcterms:isVersionOf <https://doi.org/10.5281/zenodo.20202095> ;
     vann:preferredNamespacePrefix "hydlab" ;
     vann:preferredNamespaceURI "https://purl.org/hydlab/ns#" ;
     dcterms:creator "Smritirekha Talukdar" ;
     dcterms:created "2026"^^xsd:gYear ;
-    dcterms:created "2024-05-01"^^xsd:date .
+    dcterms:created "2026-05-01"^^xsd:date .
 
 
 # ==============================================================================

@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20202095.svg)](https://doi.org/10.5281/zenodo.20202095)
 # Hydrogen Research Infrastructure Ontology (HYDLAB)
 
 A domain specific layered OWL ontology for the semantic modeling of hydrogen research infrastructure or a smart laboratory 
