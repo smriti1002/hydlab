@@ -1,5 +1,267 @@
 [
   {
+    "@id": "https://purl.org/hydlab/ns#AreaSciencePark",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "https://purl.org/hydlab/ns#ResearchOrganization"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A science and technology park hosting research organisations and infrastructure."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Area Science Park"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#concept": [
+      {
+        "@id": "https://purl.org/hydlab/ns#AreaSciencePark"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#Volt",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The unit of measurement for potential difference readings — Volt."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "V"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#sensorIDValue",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The numerical identifier value of a sensor."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://purl.org/hydlab/ns#SensorID"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "sensor ID value"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#float"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/sosa/madeSampling",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Relates the EIT to the sensor that performed the sampling."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://purl.org/hydlab/ns#EIT"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "made sampling"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://purl.org/hydlab/ns#Sensor"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#EIT",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://purl.org/dc/terms/isPartOf": [
+      {
+        "@id": "https://purl.org/hydlab/ns#PEMElectrolyzer"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Electrochemical Impedance Tool — the measurement apparatus associated with the PEM Electrolyzer."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "EIT"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#OneHz",
+    "@type": [
+      "https://purl.org/hydlab/ns#SamplingFrequency",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "1 Hz"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Standard 1 Hz sampling rate for EIT measurements."
+      }
+    ],
+    "https://purl.org/hydlab/ns#frequencyValue": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": 1
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#VoltUnit",
+    "@type": [
+      "https://purl.org/hydlab/ns#Volt",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "V"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Volt — SI unit of electric potential difference."
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#TechnologicalInfrastructure",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://purl.org/dc/terms/isPartOf": [
+      {
+        "@id": "https://purl.org/hydlab/ns#Organization"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A technological infrastructure belonging to an organisation."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Technological Infrastructure"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#SensorID",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The unique identifier of a sensor, typed as xsd:float."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Sensor ID"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#Sensor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A sensor that performs sampling on the EIT. Aligned with sosa:Sensor."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Sensor"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "http://www.w3.org/ns/sosa/Sensor"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#PEMElectrolyzer",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://purl.org/dc/terms/isPartOf": [
+      {
+        "@id": "https://purl.org/hydlab/ns#MainProcessUnit"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A Proton Exchange Membrane electrolyzer — a specific type of electrolyzer with a solid polymer electrolyte."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "PEM Electrolyzer"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://purl.org/hydlab/ns#Electrolyzer"
+      }
+    ]
+  },
+  {
     "@id": "https://purl.org/hydlab/ns#voltValue",
     "@type": [
       "http://www.w3.org/2002/07/owl#DatatypeProperty"
@@ -24,80 +286,6 @@
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
         "@id": "http://www.w3.org/2001/XMLSchema#integer"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#H2INFRA",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://purl.org/dc/terms/isPartOf": [
-      {
-        "@id": "https://purl.org/hydlab/ns#AreaSciencePark"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "The hydrogen infrastructure component of the technological infrastructure."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "H2INFRA"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "https://purl.org/hydlab/ns#TechnologicalInfrastructure"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#SensorID",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "The unique identifier of a sensor, typed as xsd:float."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Sensor ID"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/ns/sosa/observes",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "Relates the EIT to the observable property it measures."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "https://purl.org/hydlab/ns#EIT"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "observes"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "https://purl.org/hydlab/ns#PotentialDifference"
       }
     ]
   },
@@ -130,21 +318,198 @@
     ]
   },
   {
-    "@id": "https://purl.org/hydlab/ns#VoltUnit",
+    "@id": "https://purl.org/hydlab/ns#SamplingFrequency",
     "@type": [
-      "https://purl.org/hydlab/ns#Volt",
-      "http://www.w3.org/2002/07/owl#NamedIndividual"
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The sampling frequency of the sensor — 1 Hz (one sample per second)."
+      }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "V"
+        "@value": "1 Hz"
       }
     ],
-    "http://www.w3.org/2004/02/skos/core#definition": [
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "http://www.w3.org/ns/ssn/systems/Frequency"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#hasID",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#FunctionalProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "Volt — SI unit of electric potential difference."
+        "@value": "Relates the EIT to its unique sensor identifier."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://purl.org/hydlab/ns#EIT"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has ID"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://purl.org/hydlab/ns#SensorID"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#hasSamplingFrequency",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#FunctionalProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Relates the EIT to its sensor sampling frequency."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://purl.org/hydlab/ns#EIT"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has sampling frequency"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://purl.org/hydlab/ns#SamplingFrequency"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#Organization",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2000/01/rdf-schema#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Top-level organisational entity. Aligned with schema:Organization."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Organization"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "https://schema.org/Organization"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#altLabel": [
+      {
+        "@language": "en",
+        "@value": "Organisation"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#H2INFRA",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "https://purl.org/hydlab/ns#TechnologicalInfrastructure"
+    ],
+    "http://purl.org/dc/terms/isPartOf": [
+      {
+        "@id": "https://purl.org/hydlab/ns#AreaSciencePark"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The hydrogen infrastructure component of the technological infrastructure."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "H2INFRA"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#ResearchOrganization",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "An organisation primarily engaged in scientific research."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Research Organization"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://purl.org/hydlab/ns#Organization"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "https://schema.org/ResearchOrganization"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#broadMatch": [
+      {
+        "@id": "https://purl.org/hydlab/ns#Organization"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/sosa/observes",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Relates the EIT to the observable property it measures."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://purl.org/hydlab/ns#EIT"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "observes"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://purl.org/hydlab/ns#PotentialDifference"
       }
     ]
   },
@@ -155,8 +520,17 @@
     ],
     "http://purl.org/dc/terms/created": [
       {
+        "@type": "http://www.w3.org/2001/XMLSchema#gYear",
+        "@value": "2026"
+      },
+      {
         "@type": "http://www.w3.org/2001/XMLSchema#date",
         "@value": "2024-05-01"
+      }
+    ],
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@value": "Smritirekha Talukdar"
       }
     ],
     "http://purl.org/dc/terms/description": [
@@ -205,110 +579,81 @@
     ]
   },
   {
-    "@id": "https://purl.org/hydlab/ns#EIT",
+    "@id": "https://purl.org/hydlab/ns#Electrolyzer",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://purl.org/dc/terms/isPartOf": [
       {
-        "@id": "https://purl.org/hydlab/ns#PEMElectrolyzer"
+        "@id": "https://purl.org/hydlab/ns#MainProcessUnit"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "Electrochemical Impedance Tool — the measurement apparatus associated with the PEM Electrolyzer."
+        "@value": "An electrochemical device that uses electricity to drive a chemical reaction, typically water splitting to produce hydrogen."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "EIT"
+        "@value": "Electrolyzer"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
       {
-        "@id": "http://www.w3.org/2002/07/owl#Thing"
+        "@id": "https://emmo.info/emmo#Device"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#broadMatch": [
+      {
+        "@id": "https://purl.org/hydlab/ns#ElectrochemicalDevice"
       }
     ]
   },
   {
-    "@id": "https://purl.org/hydlab/ns#SamplingFrequency",
+    "@id": "https://purl.org/hydlab/ns#PotentialDifference",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "The sampling frequency of the sensor — 1 Hz (one sample per second)."
+        "@value": "The electric potential difference measured by the EIT. Aligned with qudt:ElectricPotentialDifference."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "1 Hz"
+        "@value": "Potential Difference"
       }
     ],
     "http://www.w3.org/2002/07/owl#equivalentClass": [
       {
-        "@id": "http://www.w3.org/ns/ssn/systems/Frequency"
+        "@id": "http://qudt.org/schema/qudt/ElectricPotentialDifference"
       }
     ]
   },
   {
-    "@id": "https://purl.org/hydlab/ns#hasSamplingFrequency",
+    "@id": "https://purl.org/hydlab/ns#ElectrochemicalDevice",
     "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "Relates the EIT to its sensor sampling frequency."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "https://purl.org/hydlab/ns#EIT"
+        "@value": "A device that converts chemical energy to electrical energy or vice versa. Aligned with EMMO Device."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "has sampling frequency"
+        "@value": "Electrochemical Device"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
       {
-        "@id": "https://purl.org/hydlab/ns#SamplingFrequency"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#frequencyValue",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "The numerical value of the sampling frequency in Hz."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "https://purl.org/hydlab/ns#SamplingFrequency"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "frequency value"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://www.w3.org/2001/XMLSchema#integer"
+        "@id": "https://emmo.info/emmo#Device"
       }
     ]
   },
@@ -341,29 +686,6 @@
     ]
   },
   {
-    "@id": "https://purl.org/hydlab/ns#APSU",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://purl.org/dc/terms/isPartOf": [
-      {
-        "@id": "https://purl.org/hydlab/ns#H2INFRA"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "Auxiliary Power Supply Unit — provides auxiliary power within the hydrogen infrastructure."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "APSU"
-      }
-    ]
-  },
-  {
     "@id": "http://www.w3.org/2004/02/skos/core#concept",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
@@ -392,43 +714,82 @@
     ]
   },
   {
-    "@id": "https://purl.org/hydlab/ns#RecordedMeasurement",
+    "@id": "https://purl.org/hydlab/ns#APSU",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "https://purl.org/hydlab/ns#HydrogenPowerPlant"
+    ],
+    "http://purl.org/dc/terms/isPartOf": [
+      {
+        "@id": "https://purl.org/hydlab/ns#H2INFRA"
+      }
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "A recorded numerical measurement value, typed as xsd:float."
+        "@value": "Analysis, Design, Storage and Use unit."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "Recorded Measurement"
+        "@value": "APSU"
       }
     ]
   },
   {
-    "@id": "https://purl.org/hydlab/ns#TechnologicalInfrastructure",
+    "@id": "https://purl.org/hydlab/ns#frequencyValue",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://purl.org/dc/terms/isPartOf": [
-      {
-        "@id": "https://purl.org/hydlab/ns#Organization"
-      }
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "A technological infrastructure belonging to an organisation."
+        "@value": "The numerical value of the sampling frequency in Hz."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://purl.org/hydlab/ns#SamplingFrequency"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "Technological Infrastructure"
+        "@value": "frequency value"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#integer"
+      }
+    ]
+  },
+  {
+    "@id": "https://purl.org/hydlab/ns#recordedValue",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The numerical value of a recorded measurement."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://purl.org/hydlab/ns#RecordedMeasurement"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "recorded value"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#float"
       }
     ]
   },
@@ -477,379 +838,20 @@
     ]
   },
   {
-    "@id": "https://purl.org/hydlab/ns#ElectrochemicalDevice",
+    "@id": "https://purl.org/hydlab/ns#RecordedMeasurement",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "A device that converts chemical energy to electrical energy or vice versa. Aligned with EMMO Device."
+        "@value": "A recorded numerical measurement value, typed as xsd:float."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "Electrochemical Device"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "https://emmo.info/emmo#Device"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#PotentialDifference",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "The electric potential difference measured by the EIT. Aligned with qudt:ElectricPotentialDifference."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Potential Difference"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "http://qudt.org/schema/qudt/ElectricPotentialDifference"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#ResearchOrganization",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "An organisation primarily engaged in scientific research."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Research Organization"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "https://purl.org/hydlab/ns#Organization"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "https://schema.org/ResearchOrganization"
-      }
-    ],
-    "http://www.w3.org/2004/02/skos/core#broadMatch": [
-      {
-        "@id": "https://purl.org/hydlab/ns#Organization"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#PEMElectrolyzer",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://purl.org/dc/terms/isPartOf": [
-      {
-        "@id": "https://purl.org/hydlab/ns#MainProcessUnit"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A Proton Exchange Membrane electrolyzer — a specific type of electrolyzer using a solid polymer electrolyte."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "PEM Electrolyzer"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "https://purl.org/hydlab/ns#Electrolyzer"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#AreaSciencePark",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A science and technology park hosting research organisations and infrastructure."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Area Science Park"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "https://purl.org/hydlab/ns#Organization"
-      }
-    ],
-    "http://www.w3.org/2004/02/skos/core#concept": [
-      {
-        "@id": "https://purl.org/hydlab/ns#AreaSciencePark"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#Organization",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "Top-level organisational entity. Aligned with schema:Organization."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Organization"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "https://schema.org/Organization"
-      }
-    ],
-    "http://www.w3.org/2004/02/skos/core#altLabel": [
-      {
-        "@language": "en",
-        "@value": "Organisation"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#OneHz",
-    "@type": [
-      "https://purl.org/hydlab/ns#SamplingFrequency",
-      "http://www.w3.org/2002/07/owl#NamedIndividual"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "1 Hz"
-      }
-    ],
-    "http://www.w3.org/2004/02/skos/core#definition": [
-      {
-        "@language": "en",
-        "@value": "Standard 1 Hz sampling rate for EIT measurements."
-      }
-    ],
-    "https://purl.org/hydlab/ns#frequencyValue": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#integer",
-        "@value": 1
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/ns/sosa/madeSampling",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "Relates the EIT to the sensor that performed the sampling."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "https://purl.org/hydlab/ns#EIT"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "made sampling"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "https://purl.org/hydlab/ns#Sensor"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#recordedValue",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "The numerical value of a recorded measurement."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "https://purl.org/hydlab/ns#RecordedMeasurement"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "recorded value"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://www.w3.org/2001/XMLSchema#float"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#sensorIDValue",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "The numerical identifier value of a sensor."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "https://purl.org/hydlab/ns#SensorID"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "sensor ID value"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://www.w3.org/2001/XMLSchema#float"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#Sensor",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A sensor that performs sampling on the EIT. Aligned with sosa:Sensor."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Sensor"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "http://www.w3.org/ns/sosa/Sensor"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#hasID",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "http://www.w3.org/2002/07/owl#FunctionalProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "Relates the EIT to its unique sensor identifier."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "https://purl.org/hydlab/ns#EIT"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "has ID"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "https://purl.org/hydlab/ns#SensorID"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#Volt",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "The unit of measurement for potential difference readings — Volt."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "V"
-      }
-    ]
-  },
-  {
-    "@id": "https://purl.org/hydlab/ns#Electrolyzer",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://purl.org/dc/terms/isPartOf": [
-      {
-        "@id": "https://purl.org/hydlab/ns#MainProcessUnit"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "An electrochemical device that uses electricity to drive a chemical reaction, typically water splitting to produce hydrogen."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Electrolyzer"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "https://emmo.info/emmo#Device"
-      }
-    ],
-    "http://www.w3.org/2004/02/skos/core#broadMatch": [
-      {
-        "@id": "https://purl.org/hydlab/ns#ElectrochemicalDevice"
+        "@value": "Recorded Measurement"
       }
     ]
   }
