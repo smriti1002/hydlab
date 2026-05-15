@@ -1,195 +1,1792 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>H2SmartLab Ontology (HYDLAB)</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 960px; margin: 40px auto; color: #222; }
-    h1   { color: #1a237e; }
-    h2   { color: #283593; border-bottom: 2px solid #283593; padding-bottom: 4px; }
-    table { border-collapse: collapse; width: 100%; margin-bottom: 32px; }
-    th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; vertical-align: top; }
-    th   { background: #e8eaf6; }
-    code { background: #f5f5f5; padding: 2px 4px; border-radius: 3px; font-size: 0.9em; }
-    .meta { background: #f9fbe7; border: 1px solid #c5e1a5; padding: 16px; border-radius: 6px; margin-bottom: 32px; }
-  </style>
+<title>H2SmartLab Ontology (HYDLAB)</title>
+<style>
+        #pylode {
+            position: fixed;
+            top: 205px;
+            left: -150px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        #metadata ul,
+        #classes ul {
+            list-style-type: none;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-left: -40px;
+        }
+        #metadata dd p {
+          margin: 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: left;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor:help;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        sup {
+            margin-left: -3px;
+        }
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+
+#toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    border: solid 1px navy;
+    font-size: small;
+    width: 180px;
+}
+#toc h3 {
+    margin-top: 5px;
+}
+
+#toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#toc .first > li {
+    margin-top: 5px;
+}
+
+#toc .second,
+#toc .third {
+    padding-left: 10px;
+}
+
+#content {
+    width: calc(100% - 150px);
+}
+
+.hover_property {
+    cursor: help;
+    text-decoration: none;
+    border-bottom: dashed 1px;
+}
+
+.setclass {
+    list-style-type: none;
+}
+
+code{
+    word-wrap: break-word;
+  }
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+td {
+    word-wrap: break-word;
+}
+#legend table.entity {
+    width: 25%;
+}
+	</style>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png"/>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<script id="schema.org" type="application/ld+json">
+[
+  {
+    "@id": "https://purl.org/hydlab/ns",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/copyrightNotice": [
+      {
+        "@language": "en",
+        "@value": "Copyright (c) 2026 Smritirekha. Licensed under CC BY-SA 4.0."
+      }
+    ],
+    "https://schema.org/creator": [
+      {
+        "@value": "Smritirekha Talukdar"
+      }
+    ],
+    "https://schema.org/dateCreated": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#gYear",
+        "@value": "2026"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-05-01"
+      }
+    ],
+    "https://schema.org/description": [
+      {
+        "@language": "en",
+        "@value": "\n        The Hydrogen Research Infrastructure Ontology (HYDLAB) describes the structure of a hydrogen\n        smart laboratory including its organisational context, physical infrastructure,\n        process units, electrochemical devices, and sensor measurement apparatus.\n        It aligns with W3C SOSA/SSN for sensor observations, EMMO for devices,\n        OEO for power plant concepts, and schema.org for organisations.\n    "
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "Hydrogen Research Infrastructure Ontology"
+      }
+    ]
+  }
+]
+	</script>
 </head>
 <body>
-  <h1>H2SmartLab Ontology <small style="font-size:0.6em;color:#888;">(HYDLAB)</small></h1>
-
-  <div class="meta">
-    <strong>Namespace:</strong> <code>https://purl.org/hydlab/ns#</code><br>
-    <strong>Preferred prefix:</strong> <code>hydlab:</code><br>
-    <strong>Version:</strong> 1.0.0<br>
-    <strong>License:</strong> <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
-  </div>
-
-  <h2>Classes (18)</h2>
-  <table>
-    <tr><th>IRI</th><th>Label</th><th>Description</th></tr>
-    
-            <tr>
-              <td><code>hydlab:SamplingFrequency</code></td>
-              <td>1 Hz</td>
-              <td>The sampling frequency of the sensor — 1 Hz (one sample per second).</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:APSU</code></td>
-              <td>APSU</td>
-              <td>Auxiliary Power Supply Unit — provides auxiliary power within the hydrogen infrastructure.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:AreaSciencePark</code></td>
-              <td>Area Science Park</td>
-              <td>A science and technology park hosting research organisations and infrastructure.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:EIT</code></td>
-              <td>EIT</td>
-              <td>Electrochemical Impedance Tool — the measurement apparatus associated with the PEM Electrolyzer.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:ElectrochemicalDevice</code></td>
-              <td>Electrochemical Device</td>
-              <td>A device that converts chemical energy to electrical energy or vice versa. Aligned with EMMO Device.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:Electrolyzer</code></td>
-              <td>Electrolyzer</td>
-              <td>An electrochemical device that uses electricity to drive a chemical reaction, typically water splitting to produce hydrogen.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:H2INFRA</code></td>
-              <td>H2INFRA</td>
-              <td>The hydrogen infrastructure component of the technological infrastructure.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:HydrogenPowerPlant</code></td>
-              <td>Hydrogen Power Plant</td>
-              <td>A power plant that uses hydrogen as its primary energy carrier.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:MainProcessUnit</code></td>
-              <td>Main Process Unit</td>
-              <td>The central process unit of the hydrogen power plant or APSU.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:Organization</code></td>
-              <td>Organization</td>
-              <td>Top-level organisational entity. Aligned with schema:Organization.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:PEMElectrolyzer</code></td>
-              <td>PEM Electrolyzer</td>
-              <td>A Proton Exchange Membrane electrolyzer — a specific type of electrolyzer using a solid polymer electrolyte.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:PotentialDifference</code></td>
-              <td>Potential Difference</td>
-              <td>The electric potential difference measured by the EIT. Aligned with qudt:ElectricPotentialDifference.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:RecordedMeasurement</code></td>
-              <td>Recorded Measurement</td>
-              <td>A recorded numerical measurement value, typed as xsd:float.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:ResearchOrganization</code></td>
-              <td>Research Organization</td>
-              <td>An organisation primarily engaged in scientific research.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:Sensor</code></td>
-              <td>Sensor</td>
-              <td>A sensor that performs sampling on the EIT. Aligned with sosa:Sensor.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:SensorID</code></td>
-              <td>Sensor ID</td>
-              <td>The unique identifier of a sensor, typed as xsd:float.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:TechnologicalInfrastructure</code></td>
-              <td>Technological Infrastructure</td>
-              <td>A technological infrastructure belonging to an organisation.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:Volt</code></td>
-              <td>V</td>
-              <td>The unit of measurement for potential difference readings — Volt.</td>
-            </tr>
-  </table>
-
-  <h2>Object Properties (7)</h2>
-  <table>
-    <tr><th>IRI</th><th>Label</th><th>Description</th></tr>
-    
-            <tr>
-              <td><code>http://www.w3.org/2004/02/skos/core#concept</code></td>
-              <td>concept</td>
-              <td>Associates the EIT with its conceptual sensor classification.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:hasID</code></td>
-              <td>has ID</td>
-              <td>Relates the EIT to its unique sensor identifier.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:hasSamplingFrequency</code></td>
-              <td>has sampling frequency</td>
-              <td>Relates the EIT to its sensor sampling frequency.</td>
-            </tr>
-            <tr>
-              <td><code>http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit</code></td>
-              <td>has unit</td>
-              <td>Relates the EIT (or its measurement) to the unit of measure.</td>
-            </tr>
-            <tr>
-              <td><code>http://purl.org/dc/terms/isPartOf</code></td>
-              <td>is part of</td>
-              <td>Relates a component to the larger entity it belongs to. Reuses dcmi:isPartOf.</td>
-            </tr>
-            <tr>
-              <td><code>http://www.w3.org/ns/sosa/madeSampling</code></td>
-              <td>made sampling</td>
-              <td>Relates the EIT to the sensor that performed the sampling.</td>
-            </tr>
-            <tr>
-              <td><code>http://www.w3.org/ns/sosa/observes</code></td>
-              <td>observes</td>
-              <td>Relates the EIT to the observable property it measures.</td>
-            </tr>
-  </table>
-
-  <h2>Datatype Properties (4)</h2>
-  <table>
-    <tr><th>IRI</th><th>Label</th><th>Description</th></tr>
-    
-            <tr>
-              <td><code>hydlab:frequencyValue</code></td>
-              <td>frequency value</td>
-              <td>The numerical value of the sampling frequency in Hz.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:recordedValue</code></td>
-              <td>recorded value</td>
-              <td>The numerical value of a recorded measurement.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:sensorIDValue</code></td>
-              <td>sensor ID value</td>
-              <td>The numerical identifier value of a sensor.</td>
-            </tr>
-            <tr>
-              <td><code>hydlab:voltValue</code></td>
-              <td>volt value</td>
-              <td>The numerical value of a voltage reading.</td>
-            </tr>
-  </table>
-
-  <hr>
-  <p style="font-size:0.8em;color:#888;">
-    Generated from <code>ontology/hydlab.ttl</code> · HYDLAB v1.0.0
-  </p>
+<div id="content">
+<div class="section" id="metadata">
+<h1>Hydrogen Research Infrastructure Ontology</h1>
+<h2>Metadata</h2>
+<dl>
+<div>
+<dt>
+<strong>IRI</strong>
+</dt>
+<dd>
+<code>https://purl.org/hydlab/ns</code>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">Title</a>
+</dt>
+<dd><p>Hydrogen Research Infrastructure Ontology</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
+</dt>
+<dd><p>Smritirekha Talukdar</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/created" title="Date of creation of the resource. Defined in DCMI Metadata Terms">Date Created</a>
+</dt>
+<dd>
+<ul>
+<li><p>2026</p></li>
+<li><p>2024-05-01</p></li>
+</ul>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">License</a>
+</dt>
+<dd>
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/rights" title="Information about rights held in and over the resource. Defined in DCMI Metadata Terms">Rights</a>
+</dt>
+<dd><p>Copyright (c) 2026 Smritirekha. Licensed under CC BY-SA 4.0.</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#versionIRI" title="The property that identifies the version IRI of an ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Iri</a>
+</dt>
+<dd>
+<a href="#1.0.0">https://purl.org/hydlab/ns/1.0.0</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#versionInfo" title="The annotation property that provides version information for an ontology or another OWL construct. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Info</a>
+</dt>
+<dd><p>1.0.0</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespacePrefix" title="None. Defined in None">Preferred Namespace Prefix</a>
+</dt>
+<dd><p>hydlab</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</dt>
+<dd><pre><code>    The Hydrogen Research Infrastructure Ontology (HYDLAB) describes the structure of a hydrogen
+    smart laboratory including its organisational context, physical infrastructure,
+    process units, electrochemical devices, and sensor measurement apparatus.
+    It aligns with W3C SOSA/SSN for sensor observations, EMMO for devices,
+    OEO for power plant concepts, and schema.org for organisations.
+</code></pre></dd>
+</div>
+</dl>
+</div>
+<div class="section" id="classes">
+<h2>Classes</h2>
+<div class="property entity" id="Organization">
+<h3>Organization
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#Organization</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Top-level organisational entity. Aligned with schema:Organization.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#equivalentClass" title="The property that determines that two given classes are equivalent, and that is used to specify datatype definitions. Defined in The OWL 2 Schema vocabulary (OWL 2)">Equivalentclass</a>
+</th>
+<td>
+<a href="https://schema.org/Organization">schema:Organization</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+</th>
+<td>
+<span>
+<a href="#ResearchOrganization">Research Organization</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="ResearchOrganization">
+<h3>Research Organization
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#ResearchOrganization</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>An organisation primarily engaged in scientific research.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="#Organization">Organization</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#equivalentClass" title="The property that determines that two given classes are equivalent, and that is used to specify datatype definitions. Defined in The OWL 2 Schema vocabulary (OWL 2)">Equivalentclass</a>
+</th>
+<td>
+<a href="https://schema.org/ResearchOrganization">schema:ResearchOrganization</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="TechnologicalInfrastructure">
+<h3>Technological Infrastructure
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#TechnologicalInfrastructure</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A technological infrastructure belonging to an organisation.</p></td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="HydrogenPowerPlant">
+<h3>Hydrogen Power Plant
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#HydrogenPowerPlant</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A power plant that uses hydrogen as its primary energy carrier.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#equivalentClass" title="The property that determines that two given classes are equivalent, and that is used to specify datatype definitions. Defined in The OWL 2 Schema vocabulary (OWL 2)">Equivalentclass</a>
+</th>
+<td>
+<a href="http://openenergy-platform.org/ontology/oeo/HydrogenPowerPlant">oeo:HydrogenPowerPlant</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="MainProcessUnit">
+<h3>Main Process Unit
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#MainProcessUnit</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The central process unit of the hydrogen power plant or APSU.</p></td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="ElectrochemicalDevice">
+<h3>Electrochemical Device
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#ElectrochemicalDevice</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A device that converts chemical energy to electrical energy or vice versa. Aligned with EMMO Device.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#equivalentClass" title="The property that determines that two given classes are equivalent, and that is used to specify datatype definitions. Defined in The OWL 2 Schema vocabulary (OWL 2)">Equivalentclass</a>
+</th>
+<td>
+<a href="https://emmo.info/emmo#Device">emmo:Device</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="Electrolyzer">
+<h3>Electrolyzer
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#Electrolyzer</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>An electrochemical device that uses electricity to drive a chemical reaction, typically water splitting to produce hydrogen.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#equivalentClass" title="The property that determines that two given classes are equivalent, and that is used to specify datatype definitions. Defined in The OWL 2 Schema vocabulary (OWL 2)">Equivalentclass</a>
+</th>
+<td>
+<a href="https://emmo.info/emmo#Device">emmo:Device</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+</th>
+<td>
+<span>
+<a href="#PEMElectrolyzer">PEM Electrolyzer</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="PEMElectrolyzer">
+<h3>PEM Electrolyzer
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#PEMElectrolyzer</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A Proton Exchange Membrane electrolyzer — a specific type of electrolyzer with a solid polymer electrolyte.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="#Electrolyzer">Electrolyzer</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="EIT">
+<h3>EIT
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#EIT</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Electrochemical Impedance Tool — the measurement apparatus associated with the PEM Electrolyzer.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#hasSamplingFrequency">has sampling frequency</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasID">has ID</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="http://www.w3.org/ns/sosa/observes">observes</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="http://www.w3.org/ns/sosa/madeSampling">made sampling</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit">has unit</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="http://www.w3.org/2004/02/skos/core#concept">concept</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="PotentialDifference">
+<h3>Potential Difference
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#PotentialDifference</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The electric potential difference measured by the EIT. Aligned with qudt:ElectricPotentialDifference.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#equivalentClass" title="The property that determines that two given classes are equivalent, and that is used to specify datatype definitions. Defined in The OWL 2 Schema vocabulary (OWL 2)">Equivalentclass</a>
+</th>
+<td>
+<a href="http://qudt.org/schema/qudt/ElectricPotentialDifference">qudt:ElectricPotentialDifference</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="http://www.w3.org/ns/sosa/observes">observes</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="Sensor">
+<h3>Sensor
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#Sensor</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A sensor that performs sampling on the EIT. Aligned with sosa:Sensor.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#equivalentClass" title="The property that determines that two given classes are equivalent, and that is used to specify datatype definitions. Defined in The OWL 2 Schema vocabulary (OWL 2)">Equivalentclass</a>
+</th>
+<td>
+<a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="http://www.w3.org/ns/sosa/madeSampling">made sampling</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="http://www.w3.org/2004/02/skos/core#concept">concept</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="1Hz">
+<h3>1 Hz
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#SamplingFrequency</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The sampling frequency of the sensor — 1 Hz (one sample per second).</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#equivalentClass" title="The property that determines that two given classes are equivalent, and that is used to specify datatype definitions. Defined in The OWL 2 Schema vocabulary (OWL 2)">Equivalentclass</a>
+</th>
+<td>
+<a href="http://www.w3.org/ns/ssn/systems/Frequency">ssn-system:Frequency</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<span>
+<a href="#frequencyValue">frequency value</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#hasSamplingFrequency">has sampling frequency</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="V">
+<h3>V
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#Volt</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The unit of measurement for potential difference readings — Volt.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<span>
+<a href="#voltValue">volt value</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit">has unit</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="RecordedMeasurement">
+<h3>Recorded Measurement
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#RecordedMeasurement</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A recorded numerical measurement value, typed as xsd:float.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<span>
+<a href="#recordedValue">recorded value</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="SensorID">
+<h3>Sensor ID
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#SensorID</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The unique identifier of a sensor, typed as xsd:float.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<span>
+<a href="#sensorIDValue">sensor ID value</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#hasID">has ID</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="objectproperties">
+<h2>Object Properties</h2>
+<div class="property entity" id="ispartof">
+<h3>is part of
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/isPartOf</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Relates a component to the larger entity it belongs to. Reuses dcmi:isPartOf.</p></td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasSamplingFrequency">
+<h3>has sampling frequency
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#hasSamplingFrequency</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Relates the EIT to its sensor sampling frequency.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#EIT">EIT</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#1Hz">1 Hz</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasID">
+<h3>has ID
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#hasID</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Relates the EIT to its unique sensor identifier.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#EIT">EIT</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#SensorID">Sensor ID</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="observes">
+<h3>observes
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/ns/sosa/observes</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Relates the EIT to the observable property it measures.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#EIT">EIT</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#PotentialDifference">Potential Difference</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="madesampling">
+<h3>made sampling
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/ns/sosa/madeSampling</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Relates the EIT to the sensor that performed the sampling.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#EIT">EIT</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#Sensor">Sensor</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasunit">
+<h3>has unit
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Relates the EIT (or its measurement) to the unit of measure.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#EIT">EIT</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#V">V</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="concept">
+<h3>concept
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2004/02/skos/core#concept</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Associates the EIT with its conceptual sensor classification.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#EIT">EIT</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#Sensor">Sensor</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="datatypeproperties">
+<h2>Datatype Properties</h2>
+<div class="property entity" id="recordedValue">
+<h3>recorded value
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#recordedValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The numerical value of a recorded measurement.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#RecordedMeasurement">Recorded Measurement</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="sensorIDValue">
+<h3>sensor ID value
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#sensorIDValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The numerical identifier value of a sensor.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#SensorID">Sensor ID</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="frequencyValue">
+<h3>frequency value
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#frequencyValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The numerical value of the sampling frequency in Hz.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#1Hz">1 Hz</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="voltValue">
+<h3>volt value
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#voltValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The numerical value of a voltage reading.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#V">V</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="functionalproperties">
+<h2>Functional Properties</h2>
+<div class="property entity" id="hasSamplingFrequency">
+<h3>has sampling frequency
+            <sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#hasSamplingFrequency</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Relates the EIT to its sensor sampling frequency.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#EIT">EIT</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#1Hz">1 Hz</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasID">
+<h3>has ID
+            <sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://purl.org/hydlab/ns#hasID</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Relates the EIT to its unique sensor identifier.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#EIT">EIT</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#SensorID">Sensor ID</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="namespaces">
+<h2>Namespaces</h2>
+<dl>
+<dt id="dcmi">dcmi</dt>
+<dd>
+<code>http://purl.org/dc/terms/</code>
+</dd>
+<dt id="emmo">emmo</dt>
+<dd>
+<code>https://emmo.info/emmo#</code>
+</dd>
+<dt id="hydlab">hydlab</dt>
+<dd>
+<code>https://purl.org/hydlab/ns#</code>
+</dd>
+<dt id="ns1">ns1</dt>
+<dd>
+<code>https://purl.org/hydlab/</code>
+</dd>
+<dt id="oeo">oeo</dt>
+<dd>
+<code>http://openenergy-platform.org/ontology/oeo/</code>
+</dd>
+<dt id="om">om</dt>
+<dd>
+<code>http://www.ontology-of-units-of-measure.org/resource/om-2/</code>
+</dd>
+<dt id="owl">owl</dt>
+<dd>
+<code>http://www.w3.org/2002/07/owl#</code>
+</dd>
+<dt id="qudt">qudt</dt>
+<dd>
+<code>http://qudt.org/schema/qudt/</code>
+</dd>
+<dt id="rdf">rdf</dt>
+<dd>
+<code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+</dd>
+<dt id="rdfs">rdfs</dt>
+<dd>
+<code>http://www.w3.org/2000/01/rdf-schema#</code>
+</dd>
+<dt id="schema">schema</dt>
+<dd>
+<code>https://schema.org/</code>
+</dd>
+<dt id="skos">skos</dt>
+<dd>
+<code>http://www.w3.org/2004/02/skos/core#</code>
+</dd>
+<dt id="sosa">sosa</dt>
+<dd>
+<code>http://www.w3.org/ns/sosa/</code>
+</dd>
+<dt id="ssn">ssn</dt>
+<dd>
+<code>http://www.w3.org/ns/ssn/</code>
+</dd>
+<dt id="ssn-system">ssn-system</dt>
+<dd>
+<code>http://www.w3.org/ns/ssn/systems/</code>
+</dd>
+<dt id="vann">vann</dt>
+<dd>
+<code>http://purl.org/vocab/vann/</code>
+</dd>
+<dt id="xsd">xsd</dt>
+<dd>
+<code>http://www.w3.org/2001/XMLSchema#</code>
+</dd>
+</dl>
+</div>
+<div id="legend">
+<h2>Legend</h2>
+<table class="entity">
+<tr>
+<td>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</td>
+<td>Classes</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</td>
+<td>Object Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</td>
+<td>Datatype Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</td>
+<td>Functional Properties</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="pylode">
+<p>made by 
+        <a href="https://github.com/rdflib/pyLODE">
+<span id="p">p</span>
+<span id="y">y</span>
+<span>LODE</span>
+</a>
+<a href="https://github.com/rdflib/pyLODE/release/3.4.2" id="version">3.4.2</a>
+<span> with the </span>
+<a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+<span>profile</span>
+</p>
+</div>
+<div id="toc">
+<h3>Table of Contents</h3>
+<ul class="first">
+<li>
+<h4>
+<a href="#metadata">Metadata</a>
+</h4>
+</li>
+<li>
+<h4>
+<a href="#classes">Classes</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#Organization">Organization</a>
+</li>
+<li>
+<a href="#ResearchOrganization">Research Organization</a>
+</li>
+<li>
+<a href="#TechnologicalInfrastructure">Technological Infrastructure</a>
+</li>
+<li>
+<a href="#HydrogenPowerPlant">Hydrogen Power Plant</a>
+</li>
+<li>
+<a href="#MainProcessUnit">Main Process Unit</a>
+</li>
+<li>
+<a href="#ElectrochemicalDevice">Electrochemical Device</a>
+</li>
+<li>
+<a href="#Electrolyzer">Electrolyzer</a>
+</li>
+<li>
+<a href="#PEMElectrolyzer">PEM Electrolyzer</a>
+</li>
+<li>
+<a href="#EIT">EIT</a>
+</li>
+<li>
+<a href="#PotentialDifference">Potential Difference</a>
+</li>
+<li>
+<a href="#Sensor">Sensor</a>
+</li>
+<li>
+<a href="#1Hz">1 Hz</a>
+</li>
+<li>
+<a href="#V">V</a>
+</li>
+<li>
+<a href="#RecordedMeasurement">Recorded Measurement</a>
+</li>
+<li>
+<a href="#SensorID">Sensor ID</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#objectproperties">Object Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#ispartof">is part of</a>
+</li>
+<li>
+<a href="#hasSamplingFrequency">has sampling frequency</a>
+</li>
+<li>
+<a href="#hasID">has ID</a>
+</li>
+<li>
+<a href="#observes">observes</a>
+</li>
+<li>
+<a href="#madesampling">made sampling</a>
+</li>
+<li>
+<a href="#hasunit">has unit</a>
+</li>
+<li>
+<a href="#concept">concept</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#datatypeproperties">Datatype Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#recordedValue">recorded value</a>
+</li>
+<li>
+<a href="#sensorIDValue">sensor ID value</a>
+</li>
+<li>
+<a href="#frequencyValue">frequency value</a>
+</li>
+<li>
+<a href="#voltValue">volt value</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#functionalproperties">Functional Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#hasSamplingFrequency">has sampling frequency</a>
+</li>
+<li>
+<a href="#hasID">has ID</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#namespaces">Namespaces</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#dcmi">dcmi</a>
+</li>
+<li>
+<a href="#emmo">emmo</a>
+</li>
+<li>
+<a href="#hydlab">hydlab</a>
+</li>
+<li>
+<a href="#ns1">ns1</a>
+</li>
+<li>
+<a href="#oeo">oeo</a>
+</li>
+<li>
+<a href="#om">om</a>
+</li>
+<li>
+<a href="#owl">owl</a>
+</li>
+<li>
+<a href="#qudt">qudt</a>
+</li>
+<li>
+<a href="#rdf">rdf</a>
+</li>
+<li>
+<a href="#rdfs">rdfs</a>
+</li>
+<li>
+<a href="#schema">schema</a>
+</li>
+<li>
+<a href="#skos">skos</a>
+</li>
+<li>
+<a href="#sosa">sosa</a>
+</li>
+<li>
+<a href="#ssn">ssn</a>
+</li>
+<li>
+<a href="#ssn-system">ssn-system</a>
+</li>
+<li>
+<a href="#vann">vann</a>
+</li>
+<li>
+<a href="#xsd">xsd</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#legend">Legend</a>
+</h4>
+<ul class="second"></ul>
+</li>
+</ul>
+</div>
 </body>
 </html>
