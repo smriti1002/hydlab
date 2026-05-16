@@ -13,25 +13,64 @@ Base IRI: https://purl.org/hydlab/ns#
 ## Hierarchy at a glance
 
 ```
-Organization
-  └── Research Organization          (schema:ResearchOrganization)
-  └── Area Science Park              (hydlab:AreaSciencePark)
-        └── Technological Infrastructure  (hydlab:TechnologicalInfrastructure)
-        │     └── Hydrogen Power Plant    (oeo:HydrogenPowerPlant)
-        │           └── Main Process Unit
-        └── H2INFRA
-              └── APSU
-                    └── Main Process Unit
-                          └── Electrolyzer          (emmo:Device)
-                          │     └── PEM Electrolyzer
-                          └── Electrochemical Device (emmo:Device)
-                                └── EIT  (owl:Thing)
-                                      ├── sosa:observes       → Potential Difference
-                                      ├── sosa:madeSampling   → Sensor
-                                      ├── skos:concept        → Sensor
-                                      ├── hydlab:hasSamplingFrequency → 1 Hz
-                                      ├── hydlab:hasID        → Sensor ID
-                                      └── om:hasUnit          → V
+TBox (Schema Level — Classes and Properties)
+
+owl:Thing
+└── Entity
+      ├── Organization                              (schema:Organization)
+      │     └── Research Organization               (schema:ResearchOrganization)
+      │
+      └── Technological Infrastructure              (hydlab:TechnologicalInfrastructure)
+            └── Hydrogen Power Plant                (oeo:HydrogenPowerPlant)
+                  └── Main Process Unit             (hydlab:MainProcessUnit)
+                        └── Electrochemical Device  (emmo:Device)
+                              └── Electrolyzer
+                                    └── PEM Electrolyzer
+                                          └── Sensor          (sosa:Sensor)
+
+ ABox (Instance Level — Named Individuals)
+
+Individuals of type: Research Organization
+└── hydlab:AreaSciencePark
+      └── rdfs:label → "Area Science Park"
+
+Individuals of type: Technological Infrastructure
+└── hydlab:H2INFRA
+      └── dcterms:isPartOf → hydlab:AreaSciencePark
+
+Individuals of type: Hydrogen Power Plant
+└── hydlab:APSU
+      └── dcterms:isPartOf → hydlab:H2INFRA
+
+Individuals of type: Main Process Unit
+└── hydlab:H2SmartLab
+      └── dcterms:isPartOf → hydlab:APSU
+
+Individuals of type: Electrolyzer
+└── hydlab:Electrolyzer
+      └── dcterms:isPartOf → hydlab:H2SmartLab
+
+Individuals of type: PEM Electrolyzer
+└── hydlab:PEMElectrolyzer
+      └── dcterms:isPartOf → hydlab:H2SmartLab
+
+Individuals of type: Sensor
+└── hydlab:EIT
+      ├── rdfs:label → "Electrical Impedance Tomography"
+      ├── dcterms:isPartOf → hydlab:PEMElectrolyzer
+      ├── sosa:observes → hydlab:ElectricalPotentialDifference
+      ├── sosa:madeSampling → hydlab:madeSampling
+      ├── hydlab:hasSamplingFrequency → "1"^^xsd:float
+      ├── hydlab:hasID → "EIT-001"^^xsd:string
+      └── om:hasUnit → om:volt
+
+Individuals of type: Observable Property
+└── hydlab:PotentialDifference
+      └── rdf:type → qudt:ElectricPotentialDifference
+
+Individuals of type: Measurement
+└── hydlab:madeSampling
+      └── rdf:type → ssn-system:Frequency         → V
 ```
 
 ## Files
