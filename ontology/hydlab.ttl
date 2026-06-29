@@ -160,7 +160,7 @@ hydlab:PEMElectrolyzer
 
 hydlab:EIT
     a owl:Class ;
-    rdfs:subClassOf owl:Thing ;
+    rdfs:subClassOf sosa:sensor ;
     rdfs:label "EIT"@en ;
     rdfs:comment "Electrochemical Impedance Tool — the measurement apparatus associated with the PEM Electrolyzer."@en ;
     dcterms:isPartOf hydlab:PEMElectrolyzer .

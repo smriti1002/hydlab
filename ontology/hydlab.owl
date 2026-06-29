@@ -8,52 +8,27 @@
    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="en">has unit</rdfs:label>
-    <rdfs:comment xml:lang="en">Relates the EIT (or its measurement) to the unit of measure.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
-    <rdfs:range rdf:resource="https://purl.org/hydlab/ns#Volt"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#OneHz">
-    <rdf:type rdf:resource="https://purl.org/hydlab/ns#SamplingFrequency"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="en">1 Hz</rdfs:label>
-    <hydlab:frequencyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hydlab:frequencyValue>
-    <skos:definition xml:lang="en">Standard 1 Hz sampling rate for EIT measurements.</skos:definition>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#APSU">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="https://purl.org/hydlab/ns#HydrogenPowerPlant"/>
-    <rdfs:label xml:lang="en">APSU</rdfs:label>
-    <rdfs:comment xml:lang="en">Analysis, Design, Storage and Use unit.</rdfs:comment>
-    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#H2INFRA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#SensorID">
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#ResearchOrganization">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Sensor ID</rdfs:label>
-    <rdfs:comment xml:lang="en">The unique identifier of a sensor, typed as xsd:float.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://purl.org/hydlab/ns#Organization"/>
+    <owl:equivalentClass rdf:resource="https://schema.org/ResearchOrganization"/>
+    <skos:broadMatch rdf:resource="https://purl.org/hydlab/ns#Organization"/>
+    <rdfs:label xml:lang="en">Research Organization</rdfs:label>
+    <rdfs:comment xml:lang="en">An organisation primarily engaged in scientific research.</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/madeSampling">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="en">made sampling</rdfs:label>
-    <rdfs:comment xml:lang="en">Relates the EIT to the sensor that performed the sampling.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
-    <rdfs:range rdf:resource="https://purl.org/hydlab/ns#Sensor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#MainProcessUnit">
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#Electrolyzer">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Main Process Unit</rdfs:label>
-    <rdfs:comment xml:lang="en">The central process unit of the hydrogen power plant or APSU.</rdfs:comment>
-    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#HydrogenPowerPlant"/>
-    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#APSU"/>
+    <owl:equivalentClass rdf:resource="https://emmo.info/emmo#Device"/>
+    <skos:broadMatch rdf:resource="https://purl.org/hydlab/ns#ElectrochemicalDevice"/>
+    <rdfs:label xml:lang="en">Electrolyzer</rdfs:label>
+    <rdfs:comment xml:lang="en">An electrochemical device that uses electricity to drive a chemical reaction, typically water splitting to produce hydrogen.</rdfs:comment>
+    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#MainProcessUnit"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#HydrogenPowerPlant">
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#ElectrochemicalDevice">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:resource="http://openenergy-platform.org/ontology/oeo/HydrogenPowerPlant"/>
-    <rdfs:label xml:lang="en">Hydrogen Power Plant</rdfs:label>
-    <rdfs:comment xml:lang="en">A power plant that uses hydrogen as its primary energy carrier.</rdfs:comment>
-    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#TechnologicalInfrastructure"/>
+    <owl:equivalentClass rdf:resource="https://emmo.info/emmo#Device"/>
+    <rdfs:label xml:lang="en">Electrochemical Device</rdfs:label>
+    <rdfs:comment xml:lang="en">A device that converts chemical energy to electrical energy or vice versa. Aligned with EMMO Device.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="https://purl.org/hydlab/ns#PEMElectrolyzer">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -62,32 +37,19 @@
     <rdfs:comment xml:lang="en">A Proton Exchange Membrane electrolyzer — a specific type of electrolyzer with a solid polymer electrolyte.</rdfs:comment>
     <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#MainProcessUnit"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#Volt">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">V</rdfs:label>
-    <rdfs:comment xml:lang="en">The unit of measurement for potential difference readings — Volt.</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#voltValue">
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#recordedValue">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:label xml:lang="en">volt value</rdfs:label>
-    <rdfs:comment xml:lang="en">The numerical value of a voltage reading.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#Volt"/>
+    <rdfs:label xml:lang="en">recorded value</rdfs:label>
+    <rdfs:comment xml:lang="en">The numerical value of a recorded measurement.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#RecordedMeasurement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#frequencyValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">frequency value</rdfs:label>
+    <rdfs:comment xml:lang="en">The numerical value of the sampling frequency in Hz.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#SamplingFrequency"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#hasSamplingFrequency">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:label xml:lang="en">has sampling frequency</rdfs:label>
-    <rdfs:comment xml:lang="en">Relates the EIT to its sensor sampling frequency.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
-    <rdfs:range rdf:resource="https://purl.org/hydlab/ns#SamplingFrequency"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#AreaSciencePark">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="https://purl.org/hydlab/ns#ResearchOrganization"/>
-    <skos:concept rdf:resource="https://purl.org/hydlab/ns#AreaSciencePark"/>
-    <rdfs:label xml:lang="en">Area Science Park</rdfs:label>
-    <rdfs:comment xml:lang="en">A science and technology park hosting research organisations and infrastructure.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="https://purl.org/hydlab/ns">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -103,66 +65,18 @@
     </dcmi:description>
     <dcmi:rights xml:lang="en">Copyright (c) 2026 Smritirekha. Licensed under CC BY-SA 4.0.</dcmi:rights>
     <dcmi:license rdf:resource="https://creativecommons.org/licenses/by-sa/4.0/"/>
+    <dcmi:identifier>https://doi.org/10.5281/zenodo.20202095</dcmi:identifier>
+    <dcmi:isVersionOf rdf:resource="https://doi.org/10.5281/zenodo.20202095"/>
     <vann:preferredNamespacePrefix>hydlab</vann:preferredNamespacePrefix>
     <vann:preferredNamespaceURI>https://purl.org/hydlab/ns#</vann:preferredNamespaceURI>
     <dcmi:creator>Smritirekha Talukdar</dcmi:creator>
     <dcmi:created rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2026</dcmi:created>
-    <dcmi:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-01</dcmi:created>
+    <dcmi:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-01</dcmi:created>
   </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#Electrolyzer">
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#RecordedMeasurement">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:resource="https://emmo.info/emmo#Device"/>
-    <skos:broadMatch rdf:resource="https://purl.org/hydlab/ns#ElectrochemicalDevice"/>
-    <rdfs:label xml:lang="en">Electrolyzer</rdfs:label>
-    <rdfs:comment xml:lang="en">An electrochemical device that uses electricity to drive a chemical reaction, typically water splitting to produce hydrogen.</rdfs:comment>
-    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#MainProcessUnit"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#recordedValue">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:label xml:lang="en">recorded value</rdfs:label>
-    <rdfs:comment xml:lang="en">The numerical value of a recorded measurement.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#RecordedMeasurement"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#hasID">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:label xml:lang="en">has ID</rdfs:label>
-    <rdfs:comment xml:lang="en">Relates the EIT to its unique sensor identifier.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
-    <rdfs:range rdf:resource="https://purl.org/hydlab/ns#SensorID"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#ElectrochemicalDevice">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:resource="https://emmo.info/emmo#Device"/>
-    <rdfs:label xml:lang="en">Electrochemical Device</rdfs:label>
-    <rdfs:comment xml:lang="en">A device that converts chemical energy to electrical energy or vice versa. Aligned with EMMO Device.</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#frequencyValue">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:label xml:lang="en">frequency value</rdfs:label>
-    <rdfs:comment xml:lang="en">The numerical value of the sampling frequency in Hz.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#SamplingFrequency"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#SamplingFrequency">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:resource="http://www.w3.org/ns/ssn/systems/Frequency"/>
-    <rdfs:label xml:lang="en">1 Hz</rdfs:label>
-    <rdfs:comment xml:lang="en">The sampling frequency of the sensor — 1 Hz (one sample per second).</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#TechnologicalInfrastructure">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Technological Infrastructure</rdfs:label>
-    <rdfs:comment xml:lang="en">A technological infrastructure belonging to an organisation.</rdfs:comment>
-    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#Organization"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#H2INFRA">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="https://purl.org/hydlab/ns#TechnologicalInfrastructure"/>
-    <rdfs:label xml:lang="en">H2INFRA</rdfs:label>
-    <rdfs:comment xml:lang="en">The hydrogen infrastructure component of the technological infrastructure.</rdfs:comment>
-    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#AreaSciencePark"/>
+    <rdfs:label xml:lang="en">Recorded Measurement</rdfs:label>
+    <rdfs:comment xml:lang="en">A recorded numerical measurement value, typed as xsd:float.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#concept">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -171,37 +85,26 @@
     <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
     <rdfs:range rdf:resource="https://purl.org/hydlab/ns#Sensor"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/observes">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="en">observes</rdfs:label>
-    <rdfs:comment xml:lang="en">Relates the EIT to the observable property it measures.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
-    <rdfs:range rdf:resource="https://purl.org/hydlab/ns#PotentialDifference"/>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#MainProcessUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Main Process Unit</rdfs:label>
+    <rdfs:comment xml:lang="en">The central process unit of the hydrogen power plant or APSU.</rdfs:comment>
+    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#HydrogenPowerPlant"/>
+    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#APSU"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#VoltUnit">
-    <rdf:type rdf:resource="https://purl.org/hydlab/ns#Volt"/>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#sensorIDValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">sensor ID value</rdfs:label>
+    <rdfs:comment xml:lang="en">The numerical identifier value of a sensor.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#SensorID"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#OneHz">
+    <rdf:type rdf:resource="https://purl.org/hydlab/ns#SamplingFrequency"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="en">V</rdfs:label>
-    <skos:definition xml:lang="en">Volt — SI unit of electric potential difference.</skos:definition>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#PotentialDifference">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:resource="http://qudt.org/schema/qudt/ElectricPotentialDifference"/>
-    <rdfs:label xml:lang="en">Potential Difference</rdfs:label>
-    <rdfs:comment xml:lang="en">The electric potential difference measured by the EIT. Aligned with qudt:ElectricPotentialDifference.</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#ResearchOrganization">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://purl.org/hydlab/ns#Organization"/>
-    <owl:equivalentClass rdf:resource="https://schema.org/ResearchOrganization"/>
-    <skos:broadMatch rdf:resource="https://purl.org/hydlab/ns#Organization"/>
-    <rdfs:label xml:lang="en">Research Organization</rdfs:label>
-    <rdfs:comment xml:lang="en">An organisation primarily engaged in scientific research.</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/isPartOf">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="en">is part of</rdfs:label>
-    <rdfs:comment xml:lang="en">Relates a component to the larger entity it belongs to. Reuses dcmi:isPartOf.</rdfs:comment>
+    <rdfs:label xml:lang="en">1 Hz</rdfs:label>
+    <hydlab:frequencyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hydlab:frequencyValue>
+    <skos:definition xml:lang="en">Standard 1 Hz sampling rate for EIT measurements.</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:about="https://purl.org/hydlab/ns#Organization">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -211,12 +114,77 @@
     <rdfs:comment xml:lang="en">Top-level organisational entity. Aligned with schema:Organization.</rdfs:comment>
     <skos:altLabel xml:lang="en">Organisation</skos:altLabel>
   </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#sensorIDValue">
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#voltValue">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:label xml:lang="en">sensor ID value</rdfs:label>
-    <rdfs:comment xml:lang="en">The numerical identifier value of a sensor.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#SensorID"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label xml:lang="en">volt value</rdfs:label>
+    <rdfs:comment xml:lang="en">The numerical value of a voltage reading.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#Volt"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#hasID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="en">has ID</rdfs:label>
+    <rdfs:comment xml:lang="en">Relates the EIT to its unique sensor identifier.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
+    <rdfs:range rdf:resource="https://purl.org/hydlab/ns#SensorID"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#H2INFRA">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://purl.org/hydlab/ns#TechnologicalInfrastructure"/>
+    <rdfs:label xml:lang="en">H2INFRA</rdfs:label>
+    <rdfs:comment xml:lang="en">The hydrogen infrastructure component of the technological infrastructure.</rdfs:comment>
+    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#AreaSciencePark"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#EIT">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/sensor"/>
+    <rdfs:label xml:lang="en">EIT</rdfs:label>
+    <rdfs:comment xml:lang="en">Electrochemical Impedance Tool — the measurement apparatus associated with the PEM Electrolyzer.</rdfs:comment>
+    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#PEMElectrolyzer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#SensorID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Sensor ID</rdfs:label>
+    <rdfs:comment xml:lang="en">The unique identifier of a sensor, typed as xsd:float.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#HydrogenPowerPlant">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:resource="http://openenergy-platform.org/ontology/oeo/HydrogenPowerPlant"/>
+    <rdfs:label xml:lang="en">Hydrogen Power Plant</rdfs:label>
+    <rdfs:comment xml:lang="en">A power plant that uses hydrogen as its primary energy carrier.</rdfs:comment>
+    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#TechnologicalInfrastructure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/observes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">observes</rdfs:label>
+    <rdfs:comment xml:lang="en">Relates the EIT to the observable property it measures.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
+    <rdfs:range rdf:resource="https://purl.org/hydlab/ns#PotentialDifference"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#TechnologicalInfrastructure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Technological Infrastructure</rdfs:label>
+    <rdfs:comment xml:lang="en">A technological infrastructure belonging to an organisation.</rdfs:comment>
+    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#APSU">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://purl.org/hydlab/ns#HydrogenPowerPlant"/>
+    <rdfs:label xml:lang="en">APSU</rdfs:label>
+    <rdfs:comment xml:lang="en">Analysis, Design, Storage and Use unit.</rdfs:comment>
+    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#H2INFRA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#VoltUnit">
+    <rdf:type rdf:resource="https://purl.org/hydlab/ns#Volt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="en">V</rdfs:label>
+    <skos:definition xml:lang="en">Volt — SI unit of electric potential difference.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/isPartOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">is part of</rdfs:label>
+    <rdfs:comment xml:lang="en">Relates a component to the larger entity it belongs to. Reuses dcmi:isPartOf.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="https://purl.org/hydlab/ns#Sensor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -224,16 +192,50 @@
     <rdfs:label xml:lang="en">Sensor</rdfs:label>
     <rdfs:comment xml:lang="en">A sensor that performs sampling on the EIT. Aligned with sosa:Sensor.</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#EIT">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-    <rdfs:label xml:lang="en">EIT</rdfs:label>
-    <rdfs:comment xml:lang="en">Electrochemical Impedance Tool — the measurement apparatus associated with the PEM Electrolyzer.</rdfs:comment>
-    <dcmi:isPartOf rdf:resource="https://purl.org/hydlab/ns#PEMElectrolyzer"/>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#AreaSciencePark">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://purl.org/hydlab/ns#ResearchOrganization"/>
+    <skos:concept rdf:resource="https://purl.org/hydlab/ns#AreaSciencePark"/>
+    <rdfs:label xml:lang="en">Area Science Park</rdfs:label>
+    <rdfs:comment xml:lang="en">A science and technology park hosting research organisations and infrastructure.</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="https://purl.org/hydlab/ns#RecordedMeasurement">
+  <rdf:Description rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has unit</rdfs:label>
+    <rdfs:comment xml:lang="en">Relates the EIT (or its measurement) to the unit of measure.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
+    <rdfs:range rdf:resource="https://purl.org/hydlab/ns#Volt"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#Volt">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Recorded Measurement</rdfs:label>
-    <rdfs:comment xml:lang="en">A recorded numerical measurement value, typed as xsd:float.</rdfs:comment>
+    <rdfs:label xml:lang="en">V</rdfs:label>
+    <rdfs:comment xml:lang="en">The unit of measurement for potential difference readings — Volt.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/madeSampling">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">made sampling</rdfs:label>
+    <rdfs:comment xml:lang="en">Relates the EIT to the sensor that performed the sampling.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
+    <rdfs:range rdf:resource="https://purl.org/hydlab/ns#Sensor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#hasSamplingFrequency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="en">has sampling frequency</rdfs:label>
+    <rdfs:comment xml:lang="en">Relates the EIT to its sensor sampling frequency.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://purl.org/hydlab/ns#EIT"/>
+    <rdfs:range rdf:resource="https://purl.org/hydlab/ns#SamplingFrequency"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#SamplingFrequency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/ns/ssn/systems/Frequency"/>
+    <rdfs:label xml:lang="en">1 Hz</rdfs:label>
+    <rdfs:comment xml:lang="en">The sampling frequency of the sensor — 1 Hz (one sample per second).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://purl.org/hydlab/ns#PotentialDifference">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:resource="http://qudt.org/schema/qudt/ElectricPotentialDifference"/>
+    <rdfs:label xml:lang="en">Potential Difference</rdfs:label>
+    <rdfs:comment xml:lang="en">The electric potential difference measured by the EIT. Aligned with qudt:ElectricPotentialDifference.</rdfs:comment>
   </rdf:Description>
 </rdf:RDF>
